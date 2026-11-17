@@ -11,14 +11,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - name: Install Gradle and Generate Wrapper
-        run: |
-          sudo apt-get update && sudo apt-get install -y gradle
-          cd AngryGooseNeoForge
-          gradle wrapper
-          chmod +x gradlew
+      - name: Install System Gradle
+        run: sudo apt-get update && sudo apt-get install -y gradle
       - name: Build with Gradle
-        run: ./gradlew build
+        run: gradle build
         working-directory: AngryGooseNeoForge
       - name: Upload Mod Jar Artifact
         uses: actions/upload-artifact@v4
